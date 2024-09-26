@@ -14,16 +14,17 @@ function getData(username){
       res.json().then(
           (data)=>{
               console.log(data);
-              displayUser()
+              displayUser(data)
           }
       ).catch((error)=>console.log("Problema con el Json",error))
-    }).catch((err)=>console.log("Exitio un problema en la solicitud",err))
+      //se cambio en donde se llama la función del error
+    }).catch((err), handleError(error));
 }
-function displayUser() {
-  console.log(data);
-  name.textContent = `${data.name}`;
-  blog.textContent = `${data.blog}`;
-  location2.textContent = `${data.location}`;
+//se cambio el como semuestran los datos 
+function displayUser(data) {
+  name.textContent = `Nombre: ${data.name}`;
+  blog.textContent = `Blog: ${data.blog}`;
+  location2.textContent = `Locación: ${data.location}`;
 }
 
 function handleError(err) {
